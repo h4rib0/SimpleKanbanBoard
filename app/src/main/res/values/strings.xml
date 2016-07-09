@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SimpleKanbanBoard</string>
+    <string name="ready">ready</string>
+    <string name="doing">doing</string>
+    <string name="done">done</string>
+    <string name="bitte_text_eintragen">Bitte Text eintragen</string>
+    <string name="add">add</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
 </resources>

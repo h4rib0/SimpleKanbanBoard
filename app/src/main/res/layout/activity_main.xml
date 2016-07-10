@@ -60,9 +60,8 @@
             android:layout_height="match_parent"
             android:weightSum="3"
             android:baselineAligned="false">
-
             <LinearLayout
-                android:id="@+id/left"
+                android:id="@+id/ready"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:background="@drawable/shape"
@@ -70,17 +69,9 @@
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:gravity="center_horizontal">
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Medium Text"
-                    android:textAppearance="?android:attr/textAppearanceMedium"/>
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/middle"
+                android:id="@+id/doing"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:background="@drawable/shape"
@@ -88,17 +79,9 @@
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:gravity="center_horizontal">
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Medium Text"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
-
             <LinearLayout
-                android:id="@+id/right"
+                android:id="@+id/done"
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:background="@drawable/shape"
@@ -106,20 +89,6 @@
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:gravity="center_horizontal">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Medium Text"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Medium Text"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
         </LinearLayout>
     </GridLayout>
@@ -140,7 +109,7 @@
             android:inputType="textMultiLine"
             android:ems="12"
             android:maxLength="50"
-            android:id="@+id/editText" />
+            android:id="@+id/editTextKanbanCardInput" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -171,7 +140,6 @@
                 android:contentDescription="@string/delete" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
 
 

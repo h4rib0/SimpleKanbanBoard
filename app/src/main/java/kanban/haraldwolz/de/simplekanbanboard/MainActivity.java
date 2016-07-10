@@ -1,10 +1,13 @@
 package kanban.haraldwolz.de.simplekanbanboard;
 
+import android.content.Context;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static String TAG = "MainActivity";
 
-    private EditText textInput;
     private LinearLayout readyColumn;
     private LinearLayout doingColumn;
     private LinearLayout doneColoumn;
+    private EditText textInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupViews() {
         setupColumns();
+        setupTextInput();
         setupAddButton();
         setupUpdateButton();
         setupDeleteButton();
@@ -45,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         doneColoumn.setOnDragListener(new DragAndDropDragListener(this));
     }
 
+    private void setupTextInput(){
+        textInput = (EditText) findViewById(R.id.editTextKanbanCardInput);
+    }
+
     private void setupAddButton() {
         ImageView add = (ImageView) findViewById(R.id.imageViewAdd);
         add.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +62,15 @@ public class MainActivity extends AppCompatActivity {
 
                 if(!TextUtils.isEmpty(inputText)) {
                     addTextViewToReadyColumn(inputText);
+                    finishInput();
+                }else{
+                    showErrorMessageEmptyText();
                 }
             }
         });
     }
+
+
 
     private void setupUpdateButton() {
         ImageView update = (ImageView) findViewById(R.id.imageViewUpdate);
@@ -77,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 deleteSelectedTextView();
             }
         });
-
     }
 
     private TextView createNewTextView(String text) {
@@ -95,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String getTextFromInputField(){
-        EditText textInput = (EditText) findViewById(R.id.editTextKanbanCardInput);
         return textInput.getText().toString();
     }
 
@@ -103,11 +114,23 @@ public class MainActivity extends AppCompatActivity {
         readyColumn.addView(createNewTextView(inputText));
     }
 
+    private void finishInput() {
+        textInput.setText("");
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(textInput.getWindowToken(), 0);
+    }
+
+
     private void updateSelectedTextView() {
         Log.d(TAG, "updateTextView");
     }
 
     private void deleteSelectedTextView() {
         Log.d(TAG, "deleteTextView");
+    }
+
+    private void showErrorMessageEmptyText() {
+        Snackbar snackbar = Snackbar.make(findViewById(R.id.editTextKanbanCardInput), R.string.insert_text, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 }

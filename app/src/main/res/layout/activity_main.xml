@@ -129,7 +129,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/imageViewUpdate"
-                android:src="@drawable/abc_ic_ab_back_material"
+                android:src="@android:drawable/ic_menu_revert"
                 android:contentDescription="@string/update" />
 
             <ImageView
